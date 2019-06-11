@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: test-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - http:
+      paths:
+        - path: /golang
+          backend:
+            serviceName: golang-svc
+            servicePort: 3000
+        - path: /python
+          backend:
+            serviceName: python-svc
+            servicePort: 3000
+
